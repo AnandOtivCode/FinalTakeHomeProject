@@ -24,10 +24,9 @@ struct CollegeView: View {
                 
                 
                 VStack {
-                    //TODO: Add custom font
-                    Text("St Clair College")
-                        .font(.title)
-                        .multilineTextAlignment(.center)
+                    CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
+                   
+
                 }
                 .padding()
             }

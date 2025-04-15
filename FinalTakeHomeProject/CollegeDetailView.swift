@@ -23,7 +23,23 @@ struct CollegeDetailView: View {
         NavigationStack{
             ScrollView {
                 VStack{
-                    Text("Hello")
+                    AsyncImage(url: URL(string:collegeData.logo)){
+                        result in
+                        
+                        if let image = result.image{
+                            image
+                                .resizable()
+                                .frame(width: 250, height:250)
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                            
+                        } else if result.error != nil{
+                            Image(systemName: "photo")
+                        } else {
+                            ProgressView()
+                        }
+                    }
+                    
                     Text(collegeData.name)
                     Text(collegeData.subtitle)
                     Text(collegeData.details)
