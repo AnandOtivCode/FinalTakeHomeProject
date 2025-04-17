@@ -22,6 +22,10 @@ struct EntryView: View {
                 Tab("Projects", systemImage: "hammer"){
                    ProjectView()
                }
+                
+                Tab("Course Info", systemImage:"hammer"){
+                    CourseInfoView()
+                }
             }
         }
     }

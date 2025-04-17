@@ -70,13 +70,12 @@ struct SemesterDetailView: View {
 //                    }
 
 #Preview {
-    //CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
-    
-   // SemesterDetailView(tvstore: TVStore.exampleTVShowStore, tvShow: TVShow.exampleTVShow)
-    
-    SemesterDetailView(coursestore:CourseStore.exampleCourseStore, courseData: CourseData.sampleCourseData)
+//    //CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
+//    
+//   // SemesterDetailView(tvstore: TVStore.exampleTVShowStore, tvShow: TVShow.exampleTVShow)
+//    
+//    SemesterDetailView(coursestore:CourseStore.exampleCourseStore, courseData: CourseData.sampleCourseData)
 }
 
 
-//DetailView(movie: Movie.exampleMovie)
 

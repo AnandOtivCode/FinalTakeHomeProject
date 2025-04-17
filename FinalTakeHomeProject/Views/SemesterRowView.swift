@@ -14,6 +14,7 @@ import SwiftUI
 
 struct SemesterRowView: View {
     @ObservedObject var coursestore: CourseStore
+    var semester : Semester
 
     
     //MARK: - Properties
@@ -30,11 +31,9 @@ struct SemesterRowView: View {
                     Color(.orange)
 
                     VStack{
-                        
-                        
-                        Text("Semester \(courseData.semesterNum)")
-                        Text(courseData.semesterHrs)
-                        
+                        Text("Semester \(semester.semesterNum)")
+                        //Text(semester.semesterHrs)
+
                     }
                 }
                 
@@ -73,7 +72,7 @@ struct SemesterRowView: View {
     
    // SemesterDetailView(tvstore: TVStore.exampleTVShowStore, tvShow: TVShow.exampleTVShow)
     
-    SemesterRowView(coursestore:CourseStore.exampleCourseStore, courseData: CourseData.sampleCourseData)
+//    SemesterRowView(coursestore:CourseStore.exampleCourseStore, courseData: CourseData.sampleCourseData)
 }
 
 

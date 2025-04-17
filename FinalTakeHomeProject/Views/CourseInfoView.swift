@@ -11,53 +11,40 @@
 import SwiftUI
 
 struct CourseInfoView: View {
-    @ObservedObject var coursestore: CourseStore
-
+    // @ObservedObject var coursestore: CourseStore
+    
     
     //MARK:- Properties
     @State private var courseData: [CourseData] = []
+    @State private var semesters: [Semester] = []
     
     
     let gridColumns = [
         GridItem(.flexible()),
         GridItem(.flexible())]
-
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
-                
-                
-                LazyVGrid(columns: gridColumns){
-                    ForEach(courseData){
-                        course in
-                        //Link to the detail view
-                        NavigationLink(destination: SemesterDetailView(coursestore:coursestore,courseData:course)){
-                            Text("Semester \(course.semesterNum)")
-                                                        .font(.headline)
-                        }
-                        
-                        
-                        
+            LazyVGrid(columns: gridColumns){
+               // Text("hI ouTSIDE")
+                ForEach(semesters){
+                    semester in
+                    VStack{
+                        //Text("Hi INside")
+                        Text(semester.semesterNum)
+                        Text("\(semester.semesterHrs) hrs")
+
                         
                         
                     }
-                    .padding()
                 }
+                
             }.onAppear(){
                 loadData()
-        }
-            
-            
-            
+            }
+        
         }
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -73,9 +60,9 @@ struct CourseInfoView: View {
             do{
                 let (data,_) = try await URLSession.shared.data(from: url)
                 let decoder = JSONDecoder()
-                let results = try decoder.decode(CourseDatas.self, from: data)
+                let results = try decoder.decode(CourseData.self, from: data)
                 
-                courseData = results.fetchedResults
+                semesters = results.fetchedResults
             }
             
             catch DecodingError.valueNotFound(let error, let message){
@@ -94,19 +81,46 @@ struct CourseInfoView: View {
         
         
     }
-
     
-        }
-
-
-#Preview {
-    //CourseInfoView()
+    
+    
+    
+    
+    #Preview {
+       // CourseInfoView()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    //            ScrollView {
+    //
+    //
+    //                LazyVGrid(columns: gridColumns){
+    //                    ForEach(courseData){
+    //                        course in
+    //                        //Link to the detail view
+    //                        NavigationLink(destination: SemesterDetailView(coursestore:coursestore,courseData:course)){
+    //                            Text("Semester \(course.semesterNum)")
+    //                                                        .font(.headline)
+    //                        }
+    //
+    //
+    //
+    //
+    //
+    //                    }
+    //                    .padding()
+    //                }
+    //            }.onAppear(){
+    //                loadData()
+    //        }
+    //
+    //
+    //
+    //        }
 }
-        
-        
-        
-
-
-        
-        
-        

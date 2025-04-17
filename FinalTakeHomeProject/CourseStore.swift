@@ -11,11 +11,13 @@ import Foundation
 
 class CourseStore: ObservableObject {
     
-    static var exampleCourseStore: CourseStore = CourseStore(favouriteCourses: [CourseData.sampleCourseData])
+    //static var exampleCourseStore: CourseStore = CourseStore(favouriteCourses: [CourseData.sampleCourseData])
     
-    @Published var favouriteCourses: [CourseData]
+    @Published var favouriteCourses: [Course]
+    @Published var semesters: [Semester] = []
     
-    init(favouriteCourses: [CourseData]) {
+    
+    init(favouriteCourses: [Course]) {
         self.favouriteCourses = favouriteCourses
     }
     
@@ -26,7 +28,7 @@ class CourseStore: ObservableObject {
     }
     
     
-    func isInCollection(course: CourseData)-> Bool{
+    func isInCollection(course: Course )-> Bool{
         favouriteCourses.contains(course)
     }
     
@@ -44,7 +46,7 @@ class CourseStore: ObservableObject {
         }
     }
     
-    func addToFavourites(course: CourseData){
+    func addToFavourites(course: Course){
         if !isInCollection(course: course){
             favouriteCourses.append(course)
             saveFavourites()
@@ -57,7 +59,7 @@ class CourseStore: ObservableObject {
         saveFavourites()
     }
     
-    func removeFromFavourites(course: CourseData){
+    func removeFromFavourites(course: Course){
         guard let index = favouriteCourses.firstIndex(of: course) else { return }
         favouriteCourses.remove(at: index)
         saveFavourites()
@@ -69,7 +71,7 @@ class CourseStore: ObservableObject {
         do{
             let jsondecoder = JSONDecoder()
             let fetchedData = try Data(contentsOf: savedLocation)
-            favouriteCourses = try jsondecoder.decode([CourseData].self, from: fetchedData)
+            favouriteCourses = try jsondecoder.decode([Course].self, from: fetchedData)
             
         }catch{
             print("Error trying to decode - \(error.localizedDescription)")
