@@ -25,24 +25,30 @@ struct CollegeDetailView: View {
                 VStack{
                     AsyncImage(url: URL(string:collegeData.logo)){
                         result in
-                        
-                        if let image = result.image{
-                            image
-                                .resizable()
-                                .frame(width: 250, height:250)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                        HStack{
+                            if let image = result.image{
+                                image
+                                    .resizable()
+                                    .frame(width: 70, height:70)
+                                    .aspectRatio(contentMode: .fit)
+                                //.clipShape(RoundedRectangle(cornerRadius: 15))
+                                
+                            } else if result.error != nil{
+                                Image(systemName: "photo")
+                            } else {
+                                ProgressView()
+                            }
                             
-                        } else if result.error != nil{
-                            Image(systemName: "photo")
-                        } else {
-                            ProgressView()
+                            
+                            Text(collegeData.name)
+                                .font(Font.custom("SpaceGrotesk-Bold", size: 50))
                         }
                     }
-                    
-                    Text(collegeData.name)
-                    Text(collegeData.subtitle)
+                    Text(collegeData.subtitle).font(Font.custom("SpaceGrotesk-Regular", size: 20)).padding(.bottom, 9.0)
+                    Divider()
                     Text(collegeData.details)
+                        .font(.headline)
+                        .fontWeight(.thin)
                     LazyVGrid(columns: gridColumns){
                         ForEach(collegeData.allImages, id:\.self){
                             collegeImage in

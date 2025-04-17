@@ -33,7 +33,7 @@ struct SemesterRowView: View {
                         
                         
                         Text("Semester \(courseData.semesterNum)")
-                        Text(courseData.semesterHours)
+                        Text(courseData.semesterHrs)
                         
                     }
                 }

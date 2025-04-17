@@ -10,9 +10,22 @@
 		9AD215C62DAD847F009C75E4 /* FinalTakeHomeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalTakeHomeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9AD216972DB0A0C3009C75E4 /* Exceptions for "FinalTakeHomeProject" folder in "FinalTakeHomeProject" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 9AD215C52DAD847F009C75E4 /* FinalTakeHomeProject */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9AD215C82DAD847F009C75E4 /* FinalTakeHomeProject */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9AD216972DB0A0C3009C75E4 /* Exceptions for "FinalTakeHomeProject" folder in "FinalTakeHomeProject" target */,
+			);
 			path = FinalTakeHomeProject;
 			sourceTree = "<group>";
 		};
@@ -254,6 +267,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FinalTakeHomeProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalTakeHomeProject/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -282,6 +297,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FinalTakeHomeProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalTakeHomeProject/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

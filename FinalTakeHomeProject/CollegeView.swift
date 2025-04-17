@@ -11,7 +11,7 @@ import SwiftUI
 struct CollegeView: View {
     
     //MARK:- Properties
-    @State private var college: [CollegeData] = []
+    @State  var college: CollegeData?=nil
     
     let gridColumns = [
         GridItem(.flexible()),
@@ -24,14 +24,23 @@ struct CollegeView: View {
                 
                 
                 VStack {
-                    CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
-                   
-
+                    //for unwrapping the data
+                    if let college = college {
+                        CollegeDetailView(collegeData: college)
+                    }
+                }.onAppear(){
+                    loadData()
                 }
-                .padding()
+                
+                
+                
+                
+                
             }
+            .padding()
         }
     }
+    
     
     
     
@@ -50,9 +59,10 @@ struct CollegeView: View {
             do{
                 let (data,_) = try await URLSession.shared.data(from: url)
                 let decoder = JSONDecoder()
-                let results = try decoder.decode(CollegeDatas.self, from: data)
+                let results = try decoder.decode(CollegeData.self, from: data)
                 
-                college = results.data
+                college = results
+                
             }
             
             catch DecodingError.valueNotFound(let error, let message){
@@ -67,12 +77,14 @@ struct CollegeView: View {
             
             
             
+            
+            
         }
         
         
     }
+    
 }
-
 #Preview {
     CollegeView()
 }
