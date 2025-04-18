@@ -5,14 +5,30 @@
 //  Created by Anand Otiv on 2025-04-16.
 //
 
+
+//View for visiting st clair website
+
+import WebKit
 import SwiftUI
 
-struct WebView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct WebView: UIViewRepresentable{
+    let webText: String?
+    
+    func makeUIView(context: Context) -> WKWebView {
+        WKWebView()
     }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        guard let text = webText, let url = URL(string: text) else { return }
+        
+        let request = URLRequest(url: url)
+        uiView.load(request)
+    }
+    
+    typealias UIViewType = WKWebView
+    
+    
+    
+    
 }
 
-#Preview {
-    WebView()
-}

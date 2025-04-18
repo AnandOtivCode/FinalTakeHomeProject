@@ -10,8 +10,12 @@ import SwiftUI
 and a short description about what you like about this project. It will be laid out
 appropriately. Implement your custom colour on this screen.*/
 struct ProjectView: View {
+    //MARK: - Properties
+
     @State private var selectedProject = "1"
     
+    
+    //MARK: - Body Property
     var body: some View {
         
         //Wheel Picker for selecting project

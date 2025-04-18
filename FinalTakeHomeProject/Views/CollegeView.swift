@@ -5,18 +5,22 @@
 //  Created by Anand Otiv on 2025-04-14.
 //
 
+//View for The College Tab
+
 
 import SwiftUI
 
 struct CollegeView: View {
     
-    //MARK:- Properties
+    //MARK: - Properties
     @State  var college: CollegeData?=nil
     
     let gridColumns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    //MARK: - Body Property
     var body: some View {
         
         NavigationStack {
@@ -26,6 +30,7 @@ struct CollegeView: View {
                 VStack {
                     //for unwrapping the data
                     if let college = college {
+                        //Shows CollegeData using dataLoaded
                         CollegeDetailView(collegeData: college)
                     }
                 }.onAppear(){
@@ -48,7 +53,7 @@ struct CollegeView: View {
     
     
     
-    
+    //MARK: - fetch method
     func loadData(){
         Task{
             let urlString = "https://dtakaki.scweb.ca/MAD432/Finalproject/collgeInfo1.json"

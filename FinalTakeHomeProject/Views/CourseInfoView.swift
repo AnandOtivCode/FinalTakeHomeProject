@@ -11,36 +11,38 @@
 import SwiftUI
 
 struct CourseInfoView: View {
-    //@ObservedObject var coursestore: CourseStore
-    @StateObject private var coursestore = CourseStore(favouriteCourses: [])
+    //MARK: - Properties
     
+    @ObservedObject private var coursestore = CourseStore(favouriteCourses: [])
+    
+    //Color for color picker
     @State private var pickedColor =
             Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
     
     
-    //MARK:- Properties
     @State private var courseData: [CourseData] = []
     @State private var semesters: [Semester] = []
     
-    
+    //Grid Layout
     let gridColumns = [
         GridItem(.flexible()),
         GridItem(.flexible())]
     
+    //MARK: - Body Property
     var body: some View {
         
         NavigationStack {
             ScrollView{
-                
+                //Title
                 Text("Course Info")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
-                
+                //Color Picker
                 ColorPicker("", selection: $pickedColor).padding()
                 
                 
-                
+                //Displays All Semesters in a Grid
                 LazyVGrid(columns: gridColumns){
                     // Text("hI ouTSIDE")
                     ForEach(semesters){
@@ -52,10 +54,13 @@ struct CourseInfoView: View {
                                 
                                 
                                 VStack{
+                                    //Image showing the semester Number
                                     Image(systemName: "\(semester.semesterNum).square.fill").resizable().frame(width: 30, height: 30)
+                                    //Text Showing the semester Number
                                     Text("Semester: \(semester.semesterNum)")
                                         .font(.title2)
                                         .fontWeight(.heavy)
+                                    //Course Hours
                                     Text("Course Hours: \(semester.semesterHrs) hrs")
                                         .font(.title3)
                                         .fontWeight(.medium)

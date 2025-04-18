@@ -6,7 +6,7 @@
 //
 
 
-
+//View for showing all the results from the College Information JSON
 
 import SwiftUI
 
@@ -18,6 +18,7 @@ struct CollegeDetailView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    //Animation Properties
     @State private var rotationAngle: Angle = .degrees(0)
     @State private var enabled = false
 
@@ -32,10 +33,11 @@ struct CollegeDetailView: View {
                 }
             }
     }
-    
+    //MARK: - Body Property
     var body: some View {
         NavigationStack{
                 VStack{
+                    //College Logo Image
                     AsyncImage(url: URL(string:collegeData.logo)){
                         result in
                         HStack{
@@ -60,17 +62,21 @@ struct CollegeDetailView: View {
                                 ProgressView()
                             }
                             
-                            
+                            //College Title Name
                             Text(collegeData.name)
                                 .font(Font.custom("SpaceGrotesk-Bold", size: 50))
                         }
                     }
+                    //College Subtitle
                     Text(collegeData.subtitle).font(Font.custom("SpaceGrotesk-Regular", size: 20)).padding(.bottom, 9.0)
                     Divider()
+                    //College Details
                     Text(collegeData.details)
                         .font(.headline)
                         .fontWeight(.thin)
+                    //Displays All images in a Grid
                     LazyVGrid(columns: gridColumns){
+                        //Load each image in the Array
                         ForEach(collegeData.allImages, id:\.self){
                             collegeImage in
                             AsyncImage(url: URL(string:collegeImage)){
@@ -79,11 +85,11 @@ struct CollegeDetailView: View {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                       // .frame(width: 200, height: 100)
                                         .clipShape(.rect(cornerRadius: 15))
                                 } else if result.error != nil{
                                     Image(systemName: "photo")
                                 } else {
+                                    //Show progress view while image is loading
                                     ProgressView()
                                 }
                             }
@@ -91,18 +97,21 @@ struct CollegeDetailView: View {
                             
                         }
                     }
+                    //Link To St Clair Website
+                    Spacer()
+                    NavigationLink(destination: WebView(webText: "https://www.stclaircollege.ca")){
+                        Label("Visit St Clair Website", systemImage: "tent")
+                    }
                     
                     
                     
                 }
                 
                 
-            
-            
-            //
+
             
         }
-        //                    AsyncImage(url: URL(string: collegeData.schoolimages))
+      
         
         
         
@@ -114,27 +123,10 @@ struct CollegeDetailView: View {
     }
 }
             
-        
-    
-    
-    
-//
-//ForEach(collegeData.allImages, id: \.self) { urlString in
-//                        AsyncImage(url: URL(string: urlString)) { image in
-//                            image
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(height: 200)
-//                                .cornerRadius(10)
-//                                .shadow(radius: 4)
-//                        } placeholder: {
-//                            ProgressView()
-//                        }
-//                    }
+ 
 
 #Preview {
     CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
 }
 
 
-//DetailView(movie: Movie.exampleMovie)
