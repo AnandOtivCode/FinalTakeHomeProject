@@ -9,7 +9,7 @@ struct Course: Codable,Hashable, Identifiable{
     var name: String
     var description: String?
     var credits:String
-    var inPrograms: [String]
+    var inPrograms: [String]?
 }
 
 

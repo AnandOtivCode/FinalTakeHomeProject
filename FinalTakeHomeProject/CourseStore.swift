@@ -14,7 +14,6 @@ class CourseStore: ObservableObject {
     //static var exampleCourseStore: CourseStore = CourseStore(favouriteCourses: [CourseData.sampleCourseData])
     
     @Published var favouriteCourses: [Course]
-    @Published var semesters: [Semester] = []
     
     
     init(favouriteCourses: [Course]) {

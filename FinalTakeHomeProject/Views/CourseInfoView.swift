@@ -11,7 +11,8 @@
 import SwiftUI
 
 struct CourseInfoView: View {
-    // @ObservedObject var coursestore: CourseStore
+    //@ObservedObject var coursestore: CourseStore
+    @StateObject private var coursestore = CourseStore(favouriteCourses: [])
     
     
     //MARK:- Properties
@@ -26,23 +27,28 @@ struct CourseInfoView: View {
     var body: some View {
         NavigationStack {
             LazyVGrid(columns: gridColumns){
-               // Text("hI ouTSIDE")
+                // Text("hI ouTSIDE")
                 ForEach(semesters){
                     semester in
-                    VStack{
-                        //Text("Hi INside")
-                        Text(semester.semesterNum)
-                        Text("\(semester.semesterHrs) hrs")
-
-                        
-                        
+                    NavigationLink(destination: SemesterDetailView(coursestore: coursestore,semester:semester)){
+                        ZStack{
+                            
+                            VStack{
+                                //Text("Hi INside")
+                                Text(semester.semesterNum)
+                                Text("\(semester.semesterHrs) hrs")
+                                
+                            }
+                        }
                     }
+                    
+                    
                 }
                 
             }.onAppear(){
                 loadData()
             }
-        
+            
         }
     }
     
@@ -81,13 +87,14 @@ struct CourseInfoView: View {
         
         
     }
+}
     
     
     
     
     
     #Preview {
-       // CourseInfoView()
+        CourseInfoView()
     }
     
     
@@ -96,31 +103,5 @@ struct CourseInfoView: View {
     
     
     
-    
-    //            ScrollView {
-    //
-    //
-    //                LazyVGrid(columns: gridColumns){
-    //                    ForEach(courseData){
-    //                        course in
-    //                        //Link to the detail view
-    //                        NavigationLink(destination: SemesterDetailView(coursestore:coursestore,courseData:course)){
-    //                            Text("Semester \(course.semesterNum)")
-    //                                                        .font(.headline)
-    //                        }
-    //
-    //
-    //
-    //
-    //
-    //                    }
-    //                    .padding()
-    //                }
-    //            }.onAppear(){
-    //                loadData()
-    //        }
-    //
-    //
-    //
-    //        }
-}
+
+

@@ -11,24 +11,35 @@
 import SwiftUI
 
 struct EntryView: View {
-   
-        var body: some View {
-            
-            //Add tabs to switch between different views
-            TabView{
-                Tab("The College", systemImage: "graduationcap.fill"){
-                    CollegeView()
-                }
-                Tab("Projects", systemImage: "hammer"){
-                   ProjectView()
-               }
-                
-                Tab("Course Info", systemImage:"hammer"){
-                    CourseInfoView()
-                }
+    //@ObservedObject var coursestore: CourseStore
+    @StateObject private var coursestore = CourseStore(favouriteCourses: [])
+    
+    
+    
+    
+    var body: some View {
+        
+        //Add tabs to switch between different views
+        TabView{
+            Tab("The College", systemImage: "graduationcap.fill"){
+                CollegeView()
             }
+            Tab("Course Info", systemImage:"info.circle"){
+                CourseInfoView()
+            }
+            Tab("Completed", systemImage: "checkmark.circle"){
+                CompletedView(coursestore:coursestore)
+            }.badge(coursestore.favouriteCourses.count)
+            Tab("Projects", systemImage: "hammer"){
+                ProjectView()
+            }
+            
+       
+        }.onAppear(){
+            coursestore.retrieveFavourites()
         }
     }
+}
 
 
 #Preview {

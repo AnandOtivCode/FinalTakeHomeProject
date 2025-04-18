@@ -1,81 +1,38 @@
-//
-//  SemesterDetailView.swift
-//  FinalTakeHomeProject
-//
-//  Created by Anand Otiv on 2025-04-16.
-//
-
-
-
-
 
 
 import SwiftUI
 
-struct SemesterDetailView: View {
-    @ObservedObject var coursestore: CourseStore
 
+struct SemesterDetailView: View {
     
-    //MARK: - Properties
-    var courseData: CourseData
-    let gridColumns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    //MARK:- Properties
+    @ObservedObject var coursestore: CourseStore
+    @State  var semester:Semester
     
+    
+    //MARK: - Body Property
     var body: some View {
-        NavigationStack{
-            ScrollView {
-                Text("Semester Detail View")
-//                ZStack{
-//                    Color(.orange)
-//
-//                    VStack{
-//                        
-//                        
-//                        Text("Semester \(courseData.semesterNum)")
-//                        Text(courseData.semesterHours)
-//                        
-//                    }
-//                }
-                
-                
+        Text("hi")
+        List(semester.semesterCourses) { course in
+            NavigationLink(destination: CourseDetailView(coursestore:coursestore,course:course)){
+                VStack() {
+                    Text(course.name)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    Text(course.code)
+                        .font(.subheadline)
+                        .bold()
+                }
+                .padding(.vertical, 4)
             }
             
-            //
-            
         }
-        .padding()
+        
+        
+        
         
         
     }
 }
-            
-        
-    
-    
-    
-//
-//ForEach(collegeData.allImages, id: \.self) { urlString in
-//                        AsyncImage(url: URL(string: urlString)) { image in
-//                            image
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(height: 200)
-//                                .cornerRadius(10)
-//                                .shadow(radius: 4)
-//                        } placeholder: {
-//                            ProgressView()
-//                        }
-//                    }
-
-#Preview {
-//    //CollegeDetailView(collegeData: CollegeData.sampleCollegeData)
-//    
-//   // SemesterDetailView(tvstore: TVStore.exampleTVShowStore, tvShow: TVShow.exampleTVShow)
-//    
-//    SemesterDetailView(coursestore:CourseStore.exampleCourseStore, courseData: CourseData.sampleCourseData)
-}
-
 
 
