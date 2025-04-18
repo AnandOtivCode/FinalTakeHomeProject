@@ -9,17 +9,28 @@ import SwiftUI
 
 struct CompletedView: View {
     @ObservedObject var coursestore: CourseStore
+  // @StateObject private var coursestore = CourseStore(favouriteCourses: [])
+
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Completed Courses")
+            .font(.title)
+            .fontWeight(.medium)
         NavigationStack{
             List{
                 ForEach(coursestore.favouriteCourses, id:\.id){
                     course in
-                    VStack{
-                        Text(course.name)
-                        Text(course.code)
-                        
+                    HStack{
+                        Image(systemName: "checkmark.arrow.trianglehead.counterclockwise").resizable().padding(.trailing, 15.0).frame(width: 40, height: 40)
+                        VStack{
+                            Text(course.code)
+                                .font(.headline)
+                                .foregroundColor(Color.red)
+                            Text(course.name)
+                                .font(.body)
+                                .fontWeight(.medium)
+                            
+                        }
                     }
                 }.onDelete(perform: { indexSet in
                     coursestore.removeFromFavourites(usingIndexSet: indexSet)
@@ -31,5 +42,5 @@ struct CompletedView: View {
 }
 
 #Preview {
-    //CompletedView()
+    EntryView()
 }

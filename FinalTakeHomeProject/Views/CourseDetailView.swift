@@ -23,15 +23,28 @@ struct CourseDetailView: View {
     var body: some View {
         ScrollView{
             
-            Text(course.name)
+            Text(course.name).font(Font.custom("FreckleFace-Regular", size: 50)).foregroundColor(Color.purple)
+            Divider()
             Text(course.code)
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(Color.red)
+            Spacer()
+                
             Text(course.description ?? "No Description")
+                .font(.headline)
+                .fontWeight(.medium)
+            Spacer()
+                
             
-            
+            Text("Course Found In")
+                .fontWeight(.semibold)
+                .foregroundColor(Color(hue: 1.0, saturation: 0.842, brightness: 0.68))
+                .multilineTextAlignment(.center)
             let programs = course.inPrograms ?? []
             ForEach(programs , id: \.self) { program in
                 Text(program)
-            }}.toolbar{
+            }}.padding().toolbar{
                 ToolbarItem{
                     if !coursestore.isInCollection(course: course){
                             Button("Add", systemImage: "heart"){
@@ -69,7 +82,7 @@ struct CourseDetailView: View {
             //Text(program ?? "")
             
             
-            
+            //.font(Font.custom("SpaceGrotesk-Bold", size: 50))
             
             
             
@@ -78,5 +91,10 @@ struct CourseDetailView: View {
             
         
     }
+
+#Preview {
+    CourseInfoView()
+}
+
     
 

@@ -18,10 +18,23 @@ struct CollegeDetailView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    @State private var rotationAngle: Angle = .degrees(0)
+    @State private var enabled = false
+
+    var longPressGuesture: some Gesture{
+        LongPressGesture(minimumDuration: 0.2)
+    
+            .onEnded { _ in
+                withAnimation {
+                    rotationAngle += .degrees(360)
+                    enabled.toggle()
+                        
+                }
+            }
+    }
     
     var body: some View {
         NavigationStack{
-            ScrollView {
                 VStack{
                     AsyncImage(url: URL(string:collegeData.logo)){
                         result in
@@ -29,9 +42,17 @@ struct CollegeDetailView: View {
                             if let image = result.image{
                                 image
                                     .resizable()
-                                    .frame(width: 70, height:70)
+                                    .frame(width: 80, height:80)
                                     .aspectRatio(contentMode: .fit)
-                                //.clipShape(RoundedRectangle(cornerRadius: 15))
+                                    .rotationEffect(rotationAngle)
+                                    .animation(.spring(duration: 1, bounce: 0.6), value: enabled)
+                                    .gesture(longPressGuesture)
+
+                                    
+                                        /*When a user long presses on the image, it causes it to rotate, 360 degrees with a little
+                                         springiness.*/
+                                        
+                                   
                                 
                             } else if result.error != nil{
                                 Image(systemName: "photo")
@@ -76,7 +97,7 @@ struct CollegeDetailView: View {
                 }
                 
                 
-            }
+            
             
             //
             

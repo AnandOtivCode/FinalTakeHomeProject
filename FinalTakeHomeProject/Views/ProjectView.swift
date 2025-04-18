@@ -32,7 +32,7 @@ struct ProjectView: View {
                     VStack {
                         Image("Website").resizable().aspectRatio(contentMode: .fit).frame(width: 350, height:350)
                     }
-                    Text("Porfolio Website").font(.title).foregroundColor(Color("ProjectColor"))
+                    Text("Porfolio Website").font(.title).foregroundColor(Color("requiredColor"))
                     Text("Instructors: Christopher Takaki and")
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.center)
@@ -51,7 +51,7 @@ struct ProjectView: View {
                     VStack {
                         Image("TVShow App").resizable().aspectRatio(contentMode: .fit).frame(width: 350, height:350)
                         
-                        Text("TVShow App").font(.title).foregroundColor(Color("ProjectColor"))
+                        Text("TVShow App").font(.title).foregroundColor(Color("requiredColor"))
                         Text("Instructor: Christopher Takaki").fontWeight(.heavy).multilineTextAlignment(.center)
                         Text("I found it rewarding to be able to be able to have full access to searching all the shows in the Itunes store on one single app.").multilineTextAlignment(.center).padding(.horizontal, 5.0).font(.subheadline)
                         
@@ -68,7 +68,7 @@ struct ProjectView: View {
                         
                         Image("ThrowingSimulator").resizable().aspectRatio(contentMode: .fit).frame(width: 350, height:350)
                         ScrollView{
-                            Text("Throwing Simulator").font(.title).foregroundColor(Color("ProjectColor"))
+                            Text("Throwing Simulator").font(.title).foregroundColor(Color("requiredColor"))
                             Text("Instructor: Jonathon Bauer").fontWeight(.heavy).multilineTextAlignment(.center)
                             Text("I am really fond of math and physics and thought it was a lot of fun to implement this in a java app.").multilineTextAlignment(.center).font(.subheadline)
                         }
@@ -83,7 +83,7 @@ struct ProjectView: View {
                     VStack {
                         Image("Vaultify").resizable().aspectRatio(contentMode: .fit).frame(width: 350, height:350)
                         ScrollView{
-                            Text("Throwing Simulator").font(.title).foregroundColor(Color("ProjectColor"))
+                            Text("Throwing Simulator").font(.title).foregroundColor(Color("requiredColor"))
                             Text("Instructor: Cai filiault").fontWeight(.heavy).multilineTextAlignment(.center)
                             Text("I found create a  password manager database app to be rewarding as it was something that could be also useful for other people. ").font(.subheadline).multilineTextAlignment(.center)
                         }

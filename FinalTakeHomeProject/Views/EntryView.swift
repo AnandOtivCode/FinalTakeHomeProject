@@ -28,11 +28,13 @@ struct EntryView: View {
                 CourseInfoView()
             }
             Tab("Completed", systemImage: "checkmark.circle"){
-                CompletedView(coursestore:coursestore)
-            }.badge(coursestore.favouriteCourses.count)
+                CompletedView(coursestore: coursestore).badge(coursestore.favouriteCourses.count)
+            }
             Tab("Projects", systemImage: "hammer"){
                 ProjectView()
             }
+            
+         
             
        
         }.onAppear(){
