@@ -13,7 +13,7 @@ import SwiftUI
 struct CourseInfoView: View {
     //MARK: - Properties
     
-    @ObservedObject private var coursestore = CourseStore(favouriteCourses: [])
+    @ObservedObject  var coursestore: CourseStore
     
     //Color for color picker
     @State private var pickedColor =
@@ -123,9 +123,7 @@ struct CourseInfoView: View {
     
     
     
-    #Preview {
-        CourseInfoView()
-    }
+   
     
     
     

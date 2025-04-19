@@ -11,7 +11,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    //@ObservedObject var coursestore: CourseStore
     
     
     //MARK: - Properties
@@ -29,7 +28,7 @@ struct ContentView: View {
                 CollegeView()
             }
             Tab("Course Info", systemImage:"info.circle"){
-                CourseInfoView()
+                CourseInfoView(coursestore:coursestore)
             }
             Tab("Completed", systemImage: "checkmark.circle"){
                 CompletedView(coursestore: coursestore)}.badge(coursestore.favouriteCourses.count)

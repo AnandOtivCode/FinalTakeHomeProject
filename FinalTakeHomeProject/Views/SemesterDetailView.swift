@@ -52,9 +52,6 @@ struct SemesterDetailView: View {
 }
 
 
-#Preview {
-    CourseInfoView()
-}
 
 
 
