@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-/*That project will have an image, a title, the name of the instructor who taught the course
-and a short description about what you like about this project. It will be laid out
-appropriately. Implement your custom colour on this screen.*/
+
+
+//Shows 4 Projects on a wheel picker
+
+
 struct ProjectView: View {
     //MARK: - Properties
 
@@ -88,7 +90,7 @@ struct ProjectView: View {
                         Image("Vaultify").resizable().aspectRatio(contentMode: .fit).frame(width: 350, height:350)
                         ScrollView{
                             Text("Throwing Simulator").font(.title).foregroundColor(Color("requiredColor"))
-                            Text("Instructor: Cai filiault").fontWeight(.heavy).multilineTextAlignment(.center)
+                            Text("Instructor: Cai Filiault").fontWeight(.heavy).multilineTextAlignment(.center)
                             Text("I found create a  password manager database app to be rewarding as it was something that could be also useful for other people. ").font(.subheadline).multilineTextAlignment(.center)
                         }
                         
